@@ -7,19 +7,14 @@ namespace CodecRover.Core
     /// </summary>
     public class Rover
     {
-        Position m_Position;
+        public Position CurrentPosition { get; private set; }
+        public CompassDirection CurrentDirection { get; private set; } = CompassDirection.East;
 
-        Position CurrentPosition { get { return m_Position; } }
-        
         SimpleGridWorld m_World;
-
-        
-
-        CompassDirection CurrentDirection { get; private set; }
         public Rover(SimpleGridWorld world)
         {
             m_World = world;
-            m_Position = new Position() { X = 1, Y = 1 };
+            CurrentPosition = new Position() { X = 1, Y = 1 };
         }
 
         public void Rotate(TurnDirection direction)
@@ -33,13 +28,13 @@ namespace CodecRover.Core
             Position desiredPosition = ProposeNewPosition(CurrentDirection);
             if(m_World.IsValidPosition(desiredPosition.X, desiredPosition.Y))
             {
-                m_Position = desiredPosition;
+                CurrentPosition = desiredPosition;
             }
         }
 
        Position ProposeNewPosition(CompassDirection direction)
         {
-            Position pos = new Position() { X = m_Position.X, Y = m_Position.Y };
+            Position pos = new Position() { X = CurrentPosition.X, Y = CurrentPosition.Y };
             switch (direction)
             {
                 case CompassDirection.North:
