@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CodecRover.Tests
 {
-    public class Tests
+    public class TestRover
     {
         [SetUp]
         public void Setup()
@@ -19,7 +19,7 @@ namespace CodecRover.Tests
 
             Rover rover = new Rover(world);
             rover.MoveForward();
-            Assert.IsTrue(rover.CurrentPosition.X == 2 && rover.CurrentPosition.Y == 1);
+            Assert.IsTrue(rover.CurrentPosition.X == 1 && rover.CurrentPosition.Y == 2);
 
         }
 
@@ -27,7 +27,7 @@ namespace CodecRover.Tests
         public void TestBorder()
         {
             SimpleGridWorld world = new SimpleGridWorld(5, 5);
-            Command[] commands = new Command[] { Command.TurnRight, Command.Advance, Command.Advance };
+            Command[] commands = new Command[] { Command.TurnRight, Command.TurnRight, Command.TurnRight, Command.Advance, Command.Advance };
             Rover rover = new Rover(world);
             ExecuteCommands(commands, rover);
 
@@ -38,7 +38,7 @@ namespace CodecRover.Tests
         public void TestBorder_East()
         {
             SimpleGridWorld world = new SimpleGridWorld(2, 2);
-            Command[] commands = new Command[] { Command.Advance, Command.Advance, Command.Advance };
+            Command[] commands = new Command[] { Command.TurnRight, Command.Advance, Command.Advance, Command.Advance };
             Rover rover = new Rover(world);
 
             ExecuteCommands(commands, rover);
@@ -47,15 +47,15 @@ namespace CodecRover.Tests
         }
 
         [Test]
-        public void TestTurn_North()
+        public void TestTurn_East()
         {
             SimpleGridWorld world = new SimpleGridWorld(5, 5);
-            Command[] commands = new Command[] { Command.TurnLeft, Command.Advance };
+            Command[] commands = new Command[] { Command.TurnRight, Command.Advance };
             Rover rover = new Rover(world);
             
             ExecuteCommands(commands, rover);
 
-            Assert.IsTrue(rover.CurrentPosition.X == 1 && rover.CurrentPosition.Y == 2);
+            Assert.IsTrue(rover.CurrentPosition.X == 2 && rover.CurrentPosition.Y == 1);
         }
 
 

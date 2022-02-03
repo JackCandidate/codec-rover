@@ -8,7 +8,7 @@ namespace CodecRover.Core
     public class Rover
     {
         public Position CurrentPosition { get; private set; }
-        public CompassDirection CurrentDirection { get; private set; } = CompassDirection.East;
+        public CompassDirection CurrentDirection { get; private set; } = CompassDirection.North;
 
         IWorld m_World;
         public Rover(IWorld world)
