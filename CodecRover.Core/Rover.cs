@@ -10,8 +10,8 @@ namespace CodecRover.Core
         public Position CurrentPosition { get; private set; }
         public CompassDirection CurrentDirection { get; private set; } = CompassDirection.East;
 
-        SimpleGridWorld m_World;
-        public Rover(SimpleGridWorld world)
+        IWorld m_World;
+        public Rover(IWorld world)
         {
             m_World = world;
             CurrentPosition = new Position() { X = 1, Y = 1 };
