@@ -20,7 +20,12 @@ namespace CodecRover.Core
         public void Rotate(TurnDirection direction)
         {
             int directionChange = direction == TurnDirection.Left ? -1 : 1;
-             CurrentDirection = (CompassDirection)((int)(CurrentDirection + directionChange) % 4);
+            int newDirection = ((int)(CurrentDirection + directionChange) % 4);
+            if(newDirection < 0 )
+            {
+                newDirection += 4;
+            }
+            CurrentDirection = (CompassDirection)newDirection;
         }
 
         public void MoveForward()
