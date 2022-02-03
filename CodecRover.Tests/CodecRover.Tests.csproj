@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodecRover.Core\CodecRover.Core.csproj" />
+    <ProjectReference Include="..\CodecRover\CodecRover.csproj" />
   </ItemGroup>
 
 </Project>
