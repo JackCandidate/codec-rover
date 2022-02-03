@@ -27,7 +27,7 @@ namespace CodecRover.Tests
         public void TestBorder()
         {
             SimpleGridWorld world = new SimpleGridWorld(5, 5);
-            Command[] commands = new Command[] { Command.TurnLeft, Command.Advance, Command.Advance };
+            Command[] commands = new Command[] { Command.TurnRight, Command.Advance, Command.Advance };
             Rover rover = new Rover(world);
             ExecuteCommands(commands, rover);
 
@@ -47,10 +47,10 @@ namespace CodecRover.Tests
         }
 
         [Test]
-        public void TestTurn_South()
+        public void TestTurn_North()
         {
             SimpleGridWorld world = new SimpleGridWorld(5, 5);
-            Command[] commands = new Command[] { Command.TurnRight, Command.Advance };
+            Command[] commands = new Command[] { Command.TurnLeft, Command.Advance };
             Rover rover = new Rover(world);
             
             ExecuteCommands(commands, rover);
